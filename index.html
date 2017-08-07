@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<!-- saved from url=(0029)http://geektyper.com/fallout/ -->
+<html><script async="" src="http://www.google-analytics.com/analytics.js"></script><script type="text/javascript">window["_gaUserPrefs"] = { ioo : function() { return true; } }</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>GEEKtyper.com</title>
+<link id="pagestyle" rel="stylesheet" type="text/css" href="./files/style.css">
+<link rel="stylesheet" type="text/css" href="./files/windows.css">
+<link rel="stylesheet" type="text/css" href="./files/mod.css">
+<script type="text/javascript" src="./files/jquery.min.js.download"></script>
+<link rel="stylesheet" type="text/css" href="./files/spectrum.css">
+<script type="text/javascript" src="./files/spectrum.js.download"></script><style type="text/css"></style>
+<meta name="viewport" content="width=320">
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-45751574-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<script src="./files/jquery.mousewheel.min.js.download" type="text/javascript"></script>
+<script src="./files/script.js.download" type="text/javascript"></script>
+<script type="text/javascript">
+getKernel = '../ASSETS/kernels/fallout.txt';
+Typer.file = (getKernel);
+Typer.init();
+</script>
+
+
+
+
+<script type="text/javascript">
+
+
+var dragContainer = $("body");
+var currentDragData = {
+    offset: {x:0, y:0},
+    target: null
+};
+
+$(document).ready(function(e) {
+    $(document).delegate(".dragme", "mousedown", function(e) {
+        if(!currentDragData.target) {
+            if($(e.currentTarget).hasClass("dragme") && !$(e.target).closest(".folder").length) {
+                currentDragData.target = $(e.currentTarget);
+                currentDragData.target.parent().append(currentDragData.target);
+                currentDragData.offset.x = e.pageX - currentDragData.target.offset().left;//e.offsetX;
+                currentDragData.offset.y = e.pageY - currentDragData.target.offset().top;//e.offsetY;
+            }
+        }
+    });
+
+    $(document).delegate(".dragme #close", "mouseup", function(e) {
+		$(e.currentTarget).closest(".dragme").hide();
+
+    });
+	/*
+	$(document).delegate(".dragme .folder", "mouseup", function(e) {
+
+		currentDragData.target = null;
+
+	});*/
+
+    $(document).delegate(".dragme", "mouseup", function(e) {
+        if(currentDragData.target) {
+            currentDragData.target = null;
+        }
+    });
+
+    $(document).mousemove(function(e) {
+        if(currentDragData.target) {
+            e.preventDefault();
+            currentDragData.target.offset({
+                left: e.pageX - currentDragData.offset.x,
+                top: e.pageY - currentDragData.offset.y
+            });
+        }
+    });
+});
+
+function showDraggable(d) {
+	$(d).toggle();
+	$(d).parent().append($(d));
+}
+</script>
+
+
+</head>
+<body onload="startTime()">
+
+
+
+
+
+<div id="AccessGranted" class="dialog" style="display:none;"><h1>ACCESS GRANTED</h1></div>
+<div id="AccessDenied" class="dialog" ondragstart="return false;" style="display:none;"><h1>ACCESS DENIED</h1></div>
+<div id="LevelRequired" class="dialog" ondragstart="return false;" style="display:none;"><h1>SECURITY BREACH</h1><h2>LEVEL 3 ACCESS REQUIRED</h2></div>
+<div id="Downloading" ondragstart="return false;" class="dragme" style="display:none;"><img id="close" src="./files/close1.png"><h1>Downloading...</h1>Critical Data<br><img src="./files/downloading.gif"></div>
+
+
+<div id="Scan" class="dragme" ondragstart="return false;" style="display:none;"><img id="close" src="./files/close1.png"><h1>Satellite Uplink</h1>Interfacing via Stuttgard<img src="./files/nhk5its.gif"></div>
+
+<div id="Countdown" class="dragme" ondragstart="return false;" style="display:none;"><h1>Purge Facility</h1>Purging will commence in:<br><br><br><img src="./files/countdown.gif"><br><br></div>
+<div id="Password" class="dragme" ondragstart="return false;" style="display:none;"><h1>Purge Facility?</h1>Confirm password<br><img src="./files/password.gif"></div>
+
+<div id="Hash" class="dragme" ondragstart="return false;" style="display:none;"><img id="close" src="./files/close1.png"><h1>Password Decryptor</h1>Calculating Hashes<br><img src="./files/hash.gif"></div>
+<div id="Pony" class="dragme" ondragstart="return false;" style="display:none;"><img src="./files/yb7MK0i.gif"></div>
+<div id="SystemFailure" class="dragme" ondragstart="return false;" style="display:none;"></div>
+<div id="ConnectionLost" class="dragme" ondragstart="return false;" style="display:none;">Connection Lost<h2>Facility Offline</h2></div>
+<div id="Breach" class="dragme" ondragstart="return false;" style="display:none;"><img id="close" src="./files/close1.png"><h1>SECURITY ALERT</h1>INTERIOR EXOGEN BREACH<img src="./files/breach.gif"></div>
+<div id="Evacuate" class="dragme" ondragstart="return false;" style="display:none;"><img style="background:none;" id="close" src="./files/close1.png"><h1>FACILITY BREACHED</h1>CRITICAL EXOGEN BREACH<img src="./files/evacuate.gif"></div>
+<div id="Query" class="dragme" ondragstart="return false;" style="display:none;"><img id="close" src="./files/close1.png">Interpol database<img src="./files/WZYdsTD.gif"></div>
+<div id="Console" class="dragme" ondragstart="return false;" style="display:none;"><img id="close" src="./files/close1.png">Compiling Nodes<br><br><img src="./files/msmvE09.gif"></div>
+
+<div id="Numbers" ondragstart="return false;" style="display:none;"><img src="./files/id2kyxB.gif"></div>
+<div id="Radar" ondragstart="return false;" onclick="$(&quot;#Radar&quot;).toggle();" style="display:none;"><img id="close" src="./files/close1.png"><img src="./files/radar.gif"></div>
+
+
+
+<div id="Audio" class="dragme" ondragstart="return false;" style="display:none;"><img id="close" src="./files/close1.png">Voice recording<br><img src="./files/audio.gif"><img src="./files/audio.gif"><img src="./files/controls.png"></div>
+<div id="Flash" class="dragme" ondragstart="return false;" style="display:none;"><img id="close" src="./files/close1.png"><img src="./files/Bua5h62.gif"></div>
+<div id="Sequence" class="dragme" ondragstart="return false;" style="display:none;"><img id="close" src="./files/close1.png"><img src="./files/LlseBPd.gif"></div>
+<div id="Pipe" class="dragme" ondragstart="return false;" style="display:none;"><img id="close" src="./files/close1.png"><img src="./files/pipe.gif"></div>
+<div id="Stability" class="dragme" ondragstart="return false;" style="display:none;"><img id="close" src="./files/close1.png"><img src="./files/stability.gif"></div>
+<div id="Random" class="dragme" ondragstart="return false;" style="display:none;"><img id="close" src="./files/close1.png"><img src="./files/XJsjXT1.gif"></div>
+
+
+
+<div id="Help" class="dragme" ondragstart="return false;" style="display:none;">
+<img id="close" src="./files/close1.png"><img src="./files/hints.png">
+<hr>
+<p>Stats &amp; Achievements</p>
+<div id="LetterCount"></div><br>
+<div id="getAchievement1" class="ac"></div>
+<div id="getAchievement2" class="ac"></div>
+<div id="getAchievement3" class="ac"></div>
+<div id="getAchievement4" class="ac"></div>
+<div id="getAchievement5" class="ac"></div>
+<div id="getAchievement6" class="ac"></div>
+<div id="getAchievement7" class="ac"></div>
+<div id="getAchievement8" class="ac"></div>
+<div id="getAchievement9" class="ac"></div>
+<div id="itemz" style="position:fixed; bottom:20px; right:20px; overflow:hidden;  background-color:#ccc; height:90px; z-index:17">
+
+	<script type="text/javascript"><!--
+	google_ad_client = "ca-pub-3193838836354850";
+	/* omnimoads */
+	google_ad_slot = "2980063218";
+	google_ad_width = 728;
+	google_ad_height = 90;
+	//-->
+	</script>
+
+	<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+	</script>
+</div>
+</div>
+
+
+<div id="CustomWindow" class="dragme" ondragstart="return false;" style="display:none;"><img id="close" src="./files/close1.png"><h1 id="bigtitle">Click Edit to set the title</h1><p id="smalltitle">Click Edit to set the title</p><img id="customimage" src="./files/placeholder.png">
+<script>
+bigtitle = localStorage.getItem("bigtitle") || 'Click Edit to set the title';
+smalltitle = localStorage.getItem("smalltitle") || 'Click Edit to set the title';
+customimage = localStorage.getItem("customimage") || '../ASSETS/img/placeholder.png';
+document.getElementById("bigtitle").innerHTML = bigtitle;
+document.getElementById("smalltitle").innerHTML = smalltitle;
+document.getElementById("customimage").src = customimage;
+</script>
+</div>
+
+
+
+
+<script>
+
+
+
+</script>
+
+
+
+<!--
+	<div class="box" id="box">
+	<img id="icon" src="" />
+	<h1></h1>
+	<p id="achievementname"></p>
+	</div>
+
+	-->
+
+<div id="center">
+</div>
+<div id="dragme">
+<div id="console">
+<button id="button" title="Write code for me" onclick="var x = setInterval(function(){
+        Typer.addTextAuto(12);
+}, 30);">Automate</button>
+<br>
+<br>
+<div id="txt">0:28:41</div>
+ROBCO INDUSTRIES (TM) TERMLINK PROTOCOL<br><br>ENTER PASSWORD NOW_</div>
+</div>
+<div id="folders">
+<div class="folder" onclick="showDraggable(&quot;#Downloading&quot;);"><p>DL Data</p></div>
+<div class="folder" onclick="showDraggable(&quot;#Console&quot;);"><p>Terminal</p></div>
+<div class="folder" onclick="showDraggable(&quot;#Hash&quot;);"><p>Decryptor</p></div>
+<div class="folder" onclick="$(&quot;#Help&quot;).toggle();"><p>Help</p></div>
+<div class="folder" onclick="$(&quot;#BigFolder&quot;).toggle();"><p>All Scripts</p></div>
+
+<div id="result2"></div>
+</div>
+
+
+
+
+<script src="./files/keyboard_other.js.download"></script>
+
+
+<audio loop="" id="caution">
+<source src="../ASSETS/voice/mi6/caution.mp3" type="audio/mp3">
+</audio>
+
+<audio loop="" id="purge">
+<source src="../ASSETS/voice/mi6/purge.mp3" type="audio/mp3">
+</audio>
+
+
+
+
+<!--*(c) Copyright 2011 Simone Masiero. Some Rights Reserved. *This work is licensed under a Creative Commons Attribution-Noncommercial-Share Alike 3.0 License-->
+<div id="Initializing" class="dragme" ondragstart="return false;"><img id="close" src="./files/close1.png"><h1>Encrypting</h1><img src="./files/PTHgj1N.gif"></div><div id="Tracing" class="dragme" ondragstart="return false;"><img id="close" src="./files/close1.png"><img src="./files/NnVSoQT.gif"></div><div id="Deploy" class="dragme" ondragstart="return false;" style="display: none;"><img id="close" src="./files/close1.png"><h1>Activating HAWK</h1>Engage all enemy vehicles<img src="./files/snY9WtD.gif"></div><div id="Map" class="dragme" ondragstart="return false;" style="top: 238px; left: 1311px;"><img id="close" src="./files/close1.png"><h1>Tracing Contact</h1><img src="./files/vOxo92o.gif"></div><div id="Poke" class="dragme" ondragstart="return false;" style="top: 619px; left: 763px;"><img id="close" src="./files/close1.png"><h1>PROJECT SIOP-62</h1>Nuclear Weapons Program<img src="./files/Ec2Z2eb.gif"></div><div id="Rat" class="dragme" ondragstart="return false;" style="top: 153.594px; left: 298.19px;"><img id="close" src="./files/close1.png"><img src="./files/rat.gif"></div><div id="Irc" class="dragme" ondragstart="return false;" style="top: 712.594px; left: 343.391px;"><img id="close" src="./files/close1.png"><img src="./files/irc.gif"></div><div id="BigFolder" class="dragme" ondragstart="return false;" style="top: 556.8px; left: 1634.8px; display: block;">
+<img id="close" src="./files/close1.png">
+
+<h2> /root/bash/scripts</h2>
+
+<div class="folder" onclick="showDraggable(&quot;#Downloading&quot;);"><p>DL Data</p></div>
+<div class="folder" onclick="showDraggable(&quot;#Hash&quot;);"><p>Hash</p></div>
+<div class="folder" onclick="showDraggable(&quot;#Console&quot;);"><p>Terminal</p></div>
+<div class="folder" onclick="showDraggable(&quot;#Initializing&quot;);"><p>Decryptor</p></div>
+<div class="folder" onclick="showDraggable(&quot;#Map&quot;);"><p>Map</p></div>
+<div class="folder" onclick="showDraggable(&quot;#Scan&quot;);"><p>Scan 6</p></div>
+<div class="folder" onclick="showDraggable(&quot;#Query&quot;);"><p>Query Db</p></div>
+<div class="folder" onclick="showDraggable(&quot;#Deploy&quot;);"><p>Deploy</p></div>
+<div class="folder" onclick="showDraggable(&quot;#Irc&quot;);"><p>Chat</p></div>
+<div class="folder" onclick="showDraggable(&quot;#Tracing&quot;);"><p>Trace</p></div>
+<div class="folder" onclick="showDraggable(&quot;#Neurotoxin&quot;);"><p>Neuro</p></div>
+<div class="folder" onclick="showDraggable(&quot;#Rat&quot;);"><p>Infect</p></div>
+<div class="folder" onclick="showDraggable(&quot;#AccessDenied&quot;);document.getElementById(&quot;accessdenied&quot;).play();"><p>Root</p></div>
+<div class="folder" onclick="showDraggable(&quot;#Poke&quot;);"><p>SIOP</p></div>
+<div class="folder" onclick="showDraggable(&quot;#Sequence&quot;);"><p>Sequence</p></div>
+<div class="folder" onclick="showDraggable(&quot;#Random&quot;);"><p>Random</p></div>
+<div class="folder" onclick="showDraggable(&quot;#Stability&quot;);"><p>Stability</p></div>
+<div class="folder" onclick="showDraggable(&quot;#Pipe&quot;);"><p>Pipe</p></div>
+<div class="folder" onclick="showDraggable(&quot;#Audio&quot;);"><p>Audio</p></div>
+</div><div id="Neurotoxin" class="dragme" ondragstart="return false;" style="display: block; top: 595.594px; left: 1315.41px;"><img id="close" src="./files/close1.png"><h1>Flooding Facility</h1>Preparing Neurotoxin Emiters<br><br><img src="./files/eHaZXmm.gif"></div></body></html>
